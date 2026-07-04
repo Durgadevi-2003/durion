@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-=0fpej4l+liga(f%gy8x95_ii(7(a!m&zv&(0q*qbc8=i8k3-r')
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ "localhost",
+    "127.0.0.1",
+    ".onrender.com",]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+   "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'durion_certificate_verification.urls'
