@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-lg border-0 rounded-4 glass-card text-center p-5">
+      <h2 class="text-danger fw-bold"><i class="fas fa-times-circle"></i> Invalid Certificate</h2>
+      <p class="lead mt-3">The certificate number <strong>{{ certificate_number }}</strong> could not be found in our records.</p>
+      <a href="{% url 'home' %}" class="btn btn-primary">Return Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

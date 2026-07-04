@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero-section text-white p-5 rounded-4 shadow-lg">
+  <div class="row align-items-center">
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold">Durion Technologies</h1>
+      <h2 class="h3 mb-3">Certificate Verification Portal</h2>
+      <p class="lead">Verify student credentials instantly with a secure, modern certificate portal.</p>
+      <form method="post" class="row g-2 mt-4">
+        {% csrf_token %}
+        <div class="col-md-8">
+          <input type="text" class="form-control form-control-lg" name="certificate_number" placeholder="Enter Certificate Number" required>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-light btn-lg w-100" type="submit">Verify</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-5 text-center">
+      <i class="fas fa-certificate fa-8x opacity-75"></i>
+    </div>
+  </div>
+</div>
+<div class="row mt-5 g-4">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0 rounded-4 glass-card">
+      <div class="card-body">
+        <h5><i class="fas fa-shield-alt text-primary"></i> Secure Verification</h5>
+        <p class="text-muted">Instant public verification with audit-friendly logs.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0 rounded-4 glass-card">
+      <div class="card-body">
+        <h5><i class="fas fa-qrcode text-primary"></i> QR Enabled</h5>
+        <p class="text-muted">Each certificate includes a scannable QR code for mobile verification.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0 rounded-4 glass-card">
+      <div class="card-body">
+        <h5><i class="fas fa-file-pdf text-primary"></i> PDF Downloads</h5>
+        <p class="text-muted">Students can download or receive their certificates directly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

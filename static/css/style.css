@@ -1,0 +1,41 @@
+:root {
+  --primary: #0b4f8a;
+  --secondary: #1d8ce0;
+  --dark: #0b1f3a;
+  --light: #f6f9fc;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f7fbff 0%, #eef6ff 100%);
+  color: var(--dark);
+}
+.navbar-brand, .hero-section {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.hero-section {
+  min-height: 320px;
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(11, 79, 138, 0.12);
+}
+.placeholder-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #dceeff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--primary);
+  font-weight: 600;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border: none;
+}
+.btn-primary:hover {
+  opacity: 0.95;
+}

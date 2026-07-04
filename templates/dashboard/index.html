@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold text-primary">Dashboard</h2>
+    <p class="text-muted">Operational overview for certificate issuance and verification.</p>
+  </div>
+</div>
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 glass-card p-3">
+      <h5>Total Certificates</h5>
+      <h2 class="fw-bold text-primary">{{ total_certificates }}</h2>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 glass-card p-3">
+      <h5>Today's Verifications</h5>
+      <h2 class="fw-bold text-primary">{{ today_verifications }}</h2>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 glass-card p-3">
+      <h5>Downloads</h5>
+      <h2 class="fw-bold text-primary">{{ downloads }}</h2>
+    </div>
+  </div>
+</div>
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+        <h5 class="fw-bold">Activity Chart</h5>
+        <canvas id="activityChart" height="220"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+        <h5 class="fw-bold">Recent Certificates</h5>
+        <ul class="list-group list-group-flush">
+          {% for certificate in recent_certificates %}
+          <li class="list-group-item">{{ certificate.certificate_number }} - {{ certificate.intern_name }}</li>
+          {% empty %}
+          <li class="list-group-item">No certificates yet.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+        <h5 class="fw-bold">Recent Logs</h5>
+        <ul class="list-group list-group-flush">
+          {% for log in recent_logs %}
+          <li class="list-group-item">{{ log.certificate_number }} - {{ log.status }}</li>
+          {% empty %}
+          <li class="list-group-item">No logs yet.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+  window.dashboardData = {
+    certificates: {{ total_certificates }},
+    verifications: {{ today_verifications }}
+  };
+</script>
+{% endblock %}
